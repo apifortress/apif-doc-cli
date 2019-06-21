@@ -23,8 +23,8 @@ const wizard = () => {
         {
             name: 'output',
             type: 'input',
-            message: 'Output path',
-            default: './'
+            message: 'Document output file path',
+            default: 'document.pdf'
         }
     ];
     return inquirer.prompt (questions)
@@ -48,14 +48,13 @@ const generate_document = (opts) => {
     
             if (json_input) {
                 apifdoc.renderHTML (json_input, { cli: true }).then ((html) => {
-                    pdf.create (html, { format: 'A4' }).toFile (opts.output + 'document_'+ timestamp +'.pdf', () => {
-                        fs.writeFile (opts.output + 'document_'+ timestamp +'.html', html, (error) => {
-                            status.stop (true);
-                            if (error)
-                                resolve ({ success: false, error: 'Unable to write in the specified output location.' });
-                            else
-                                resolve ({ success: true, doc: opts.output });
-                        });
+                    pdf.create (html, { format: 'A4' }).toFile (opts.output, () => {
+                        status.stop (true);
+                        if (error)
+                            resolve ({ success: false, error: 'Unable to write in the specified output location.' });
+                        else
+                            resolve ({ success: true, doc: opts.output });
+                        // fs.writeFile (opts.output + 'document_'+ timestamp +'.html', html, (error) => { });
                     });
                 });
             } else 
@@ -75,11 +74,13 @@ const render_result = (result) => {
 
 const run = () => {
     console.log (chalk.bgWhite ('API Fortress Report Document'));
-    if (args.skipwizard === 'true') {
-        if (args.input !== undefined && args.output !== undefined) {
+    if (args.input !== undefined || args.i) {
+        console.log (args)
+        if ((args.input !== undefined && args.output !== undefined) 
+        || args.i !== undefined && args.o !== undefined) {
             generate_document ({
-                input: args.input,
-                output: args.output
+                input: args.input !== undefined ? args.input : args.i,
+                output: args.output !== undefined ? args.output : args.o
             }).then (render_result)
         } else
             console.log (chalk.red.bold ('\nInvalid input: missing arguments. \n'));
