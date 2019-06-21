@@ -1,0 +1,37 @@
+{
+  "name": "apif-doc-cli",
+  "version": "1.0.0",
+  "description": "API Fortress report document CLI util",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apifortress/apif-doc-cli.git"
+  },
+  "keywords": [
+    "cli",
+    "apifortress",
+    "document",
+    "report",
+    "unit-test"
+  ],
+  "author": "Lorenzo Fontana",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/apifortress/apif-doc-cli/issues"
+  },
+  "homepage": "https://github.com/apifortress/apif-doc-cli#readme",
+  "dependencies": {
+    "apif-doc": "^0.9.17",
+    "chalk": "^2.4.2",
+    "clear": "^0.1.0",
+    "cli-spinner": "^0.2.10",
+    "fs": "0.0.1-security",
+    "html-pdf": "^2.2.0",
+    "inquirer": "^6.4.0",
+    "minimist": "^1.2.0"
+  }
+}
