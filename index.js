@@ -75,7 +75,6 @@ const render_result = (result) => {
 const run = () => {
     console.log (chalk.bgWhite ('API Fortress Report Document'));
     if (args.input !== undefined || args.i) {
-        console.log (args)
         if ((args.input !== undefined && args.output !== undefined) 
         || args.i !== undefined && args.o !== undefined) {
             generate_document ({
