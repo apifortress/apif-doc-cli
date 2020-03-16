@@ -31,6 +31,6 @@
     "fs": "0.0.1-security",
     "html-pdf": "^2.2.0",
     "inquirer": "^6.4.0",
-    "minimist": "^1.2.0"
+    "minimist": "^1.2.2"
   }
 }
